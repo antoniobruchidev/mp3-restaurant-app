@@ -8,6 +8,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
         <script src="https://kit.fontawesome.com/c18c39146b.js"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+        <!-- Google sign in-->
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+
         <title>Carpez's Kitchen</title>
     </head>
 
@@ -30,7 +34,7 @@
                             <a class="orange-text text-accent-4" href="{{ url_for('seat') }}">Seat</a>
                         </li>
                         <li>
-                            <a class="orange-text text-accent-4 modal-trigger" href="#!">Login</a>
+                            <a class="orange-text text-accent-4 modal-trigger" href="#login-modal">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -46,7 +50,7 @@
                     <a href="{{ url_for('seat') }}" class="orange-text text-accent-4">Seat</a>
                 </li>
                 <li>
-                    <a href="#!" class="orange-text text-accent-4 modal-trigger">Login</a>
+                    <a href="#login-modal" class="orange-text text-accent-4 modal-trigger">Login</a>
                 </li>
             </ul>
         </header>
@@ -65,6 +69,42 @@
                     <a class="orange-text text-accent-4 right" href="#!">More Links</a>
                 </div>
             </div>
+
+            <!-- Login Modal -->
+            <div id="login-modal" class="modal brown darken-3 orange-text text-accent-4">
+                <div class="modal-content">
+                    <h4 class="center-align">Login</h4>
+                    <p class="center-align">Select method</p>
+                    <div class="row">
+                        <div class="col s5">
+                            <img src="{{ url_for('static', filename='images/metamask.svg') }}" class="right" alt="Metamask sign in">
+                        </div>
+
+                        <!-- Google Sign in -->
+                        <div class="col s5 push-s2">
+                            <div id="g_id_onload"
+                                data-client_id="{{ g_client_id }}"
+                                data-context="signin"
+                                data-ux_mode="popup"
+                                data-callback="handleCredentialResponse"
+                                data-auto_prompt="false">
+                            </div>
+
+                            <div class="g_id_signin"
+                                data-type="icon"
+                                data-shape="circle"
+                                data-theme="outline"
+                                data-text="continue_with"
+                                data-size="large">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer brown darken-3 orange-text text-accent-4">
+                <a href="#!" class="modal-close waves-effect waves-white btn-flat orange-text text-accent-4">Cancel</a>
+                </div>
+            </div>
+
         </footer>
         <!-- Compiled and minified JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
