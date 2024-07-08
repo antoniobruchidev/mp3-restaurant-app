@@ -108,6 +108,7 @@ class User(db.Model):
     f_name = db.Column(db.String, nullable=False)
     l_name = db.Column(db.String, nullable=False)
     google_id = db.Column(db.String, nullable=True)
+    email = db.Column(db.String, unique=True, nullable=True)
     password = db.Column(db.String, nullable=True)
     phone = db.Column(db.String, nullable=True)
     web3_address = db.Column(db.String(42), unique=True, nullable=False)
