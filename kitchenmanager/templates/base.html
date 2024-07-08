@@ -37,7 +37,7 @@
                             <a class="orange-text text-accent-4" href="{{ url_for('seat') }}">Seat</a>
                         </li>
                         <li>
-                            <a class="orange-text text-accent-4 modal-trigger" href="#login-modal">Login</a>
+                            <a class="orange-text text-accent-4" onclick="openModal();">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="modal-content">
                     <h4 class="center-align">Login</h4>
                     <p class="center-align">Select method</p>
-                    <div class="row">
+                    <div class="row" id="signin">
                         <div class="col s5">
                             <img src="{{ url_for('static', filename='images/metamask.svg') }}" alt="Metamask sign in" id="metamask">
                             <p id="metamaskResponse" class="center-align"></p>
@@ -104,6 +104,32 @@
                             <p id="googleResponse" class="center-align"></p>
                         </div>
                     </div>
+                    <div class="row" id="endpoints">
+                        <div class="row">
+                            <div class="col s12">
+                                <p class="center-align">
+                                    Go to your desired area</a>.
+                                </p>
+                        </div>
+                        <div class="col s2">
+                            <button class="btn waves-effect waves-light orange brown-text text-darken-3 hidden">Owner</button>
+                        </div>
+                        <div class="col s2">
+                            <button class="btn waves-effect waves-light orange brown-text text-darken-3 hidden">Manager</button>
+                        </div>
+                        <div class="col s2">
+                            <button class="btn waves-effect waves-light orange brown-text text-darken-3 hidden">Chef</button>
+                        </div>
+                        <div class="col s2">
+                            <button class="btn waves-effect waves-light orange brown-text text-darken-3 hidden">Waiter</button>
+                        </div>
+                        <div class="col s2">
+                            <button class="btn waves-effect waves-light orange brown-text text-darken-3 hidden">User</button>
+                        </div>
+                        <div class="col s2">
+                            <button class="btn waves-effect waves-light orange brown-text text-darken-3 hidden">Logout</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer brown darken-3 orange-text text-accent-4">
                 <a href="#!" class="modal-close waves-effect waves-white btn-flat orange-text text-accent-4">Cancel</a>
@@ -115,6 +141,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script>
+            if ("{{ web3_address}}" != ""){
+            window.walletAddress = "{{ web3_address }}";
+            connectMetamask();
+        }
+        </script>
     </body>
 
 </html>
